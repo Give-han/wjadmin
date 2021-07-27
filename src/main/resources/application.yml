@@ -1,0 +1,10 @@
+server:
+  port: 8081
+
+# 热部署开关，false即不启用热部署
+spring:
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+      exclude: test
