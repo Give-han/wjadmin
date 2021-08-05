@@ -22,8 +22,7 @@ public class BookController {
      */
     @GetMapping("/RecommendBook")
     private ResultVo getRecommendNewBooks() {
-        List<Object> recommendBooks = bookService.getRecommendBooks();
-        return null;
+        return bookService.getRecommendBooks();
     }
 
 }

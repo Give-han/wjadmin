@@ -54,8 +54,8 @@ class WjadminApplicationTests {
 
     @Test
     public void test() {
-        List<Map<String, Object>> recommendBooks = bookMapper.getRecommendBooks();
-        System.out.println(recommendBooks);
+//        List<Map<String, Object>> recommendBooks = bookMapper.getRecommendBooks();
+//        System.out.println(recommendBooks);
     }
 
 }
