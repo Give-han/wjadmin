@@ -60,6 +60,9 @@ public class Book {
     // 内容简介
     private String abs;
 
+    // 评分
+    private double score;
+
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
 

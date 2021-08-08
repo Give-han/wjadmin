@@ -4,11 +4,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhut.wjadmin.module.book.BookMapper">
 
-    <resultMap id="RecommendBookDTO" type="com.zhut.wjadmin.module.book.damain.RecommendBookDTO"></resultMap>
+    <resultMap id="RecommendBookDTO" type="com.zhut.wjadmin.module.book.damain.BookDTO"></resultMap>
 
     <select id="getRecommendBooks" resultMap="RecommendBookDTO">
         select a.title,a.author,a.pub_year year, a.abs, a.publisher,a.image_url imageUrl
         from book a
         where  a.state = 0
+    </select>
+
+    <select id="getPopularBook" resultMap="RecommendBookDTO">
+        select a.title, a.author, a.score, a.image_url imageUrl
+        from book a
+        where a.state = 0
+        order by a.score desc
+        <if test="count != null">
+            limit 0, #{count}
+        </if>
     </select>
 </mapper>
