@@ -3,6 +3,7 @@ package com.zhut.wjadmin.module.book.damain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -10,6 +11,8 @@ import java.util.Date;
  */
 @Data
 public class BookDTO {
+
+    private int bookId;
 
     private String title;
 
@@ -26,4 +29,6 @@ public class BookDTO {
 
     // 评分
     private double score;
+
+    private BigDecimal price;
 }

@@ -1,6 +1,7 @@
 package com.zhut.wjadmin.module.book.damain;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.zhut.wjadmin.common.domain.Base;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -12,7 +13,7 @@ import java.util.Date;
  */
 @Data
 @TableName("book")
-public class Book {
+public class Book extends Base {
 
     // id
     @TableId(value = "book_id", type = IdType.AUTO)
@@ -40,6 +41,17 @@ public class Book {
     @TableField("pub_year")
     private Date pubYear;
 
+    // 是否电子书
+    @TableField("is_ebook")
+    private int isEbook;
+
+    // 提供方
+    private String supplier;
+
+    // 字数
+    @TableField("words_num")
+    private String wordsNum;
+
     // 页数
     @TableField("page_num")
     private Integer pageNum;
@@ -62,13 +74,5 @@ public class Book {
 
     // 评分
     private double score;
-
-    @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
-
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
-
-    private String state;
 
 }

@@ -6,19 +6,58 @@
 
     <resultMap id="RecommendBookDTO" type="com.zhut.wjadmin.module.book.damain.BookDTO"></resultMap>
 
+    <sql id="bookDtoParam">
+        a.book_id bookId,
+        a.title,
+        a.author,
+        a.pub_year year,
+        a.abs,
+        a.publisher,
+        a.image_url imageUrl,
+        a.score,
+        a.price
+    </sql>
+
     <select id="getRecommendBooks" resultMap="RecommendBookDTO">
-        select a.title,a.author,a.pub_year year, a.abs, a.publisher,a.image_url imageUrl
+        select
+        <include refid="bookDtoParam"></include>
         from book a
         where  a.state = 0
     </select>
 
     <select id="getPopularBook" resultMap="RecommendBookDTO">
-        select a.title, a.author, a.score, a.image_url imageUrl
+        select
+        <include refid="bookDtoParam"></include>
         from book a
         where a.state = 0
         order by a.score desc
         <if test="count != null">
             limit 0, #{count}
         </if>
+    </select>
+
+    <select id="getBooksByMap" resultMap="RecommendBookDTO" parameterType="java.util.Map">
+        select
+        <include refid="bookDtoParam"></include>
+        from
+             book a
+        where
+              a.state = 0
+        <if test="params.isebook != null">
+            and a.is_ebook = #{params.isebook}
+        </if>
+    </select>
+
+    <select id="searchBookByName" resultMap="RecommendBookDTO">
+        select
+            <include refid="bookDtoParam"></include>
+        from book a
+        where
+            a.state = 0
+            and
+            (a.title like concat('%', #{name}, '%')
+            or a.author like concat('%', #{name}, '%')
+            or a.isbn like concat('%', #{name}, '%'))
+            order by a.score desc
     </select>
 </mapper>
