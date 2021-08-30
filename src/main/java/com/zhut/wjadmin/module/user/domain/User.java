@@ -1,6 +1,7 @@
 package com.zhut.wjadmin.module.user.domain;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.zhut.wjadmin.common.domain.Base;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -8,7 +9,7 @@ import java.util.Date;
 
 @Data
 @TableName("user_tab")
-public class User {
+public class User extends Base {
 
     /**
      * UUID(主键)
@@ -49,15 +50,4 @@ public class User {
     @TableField("birthday")
     private Date birthday;
 
-    @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
-
-    /**
-     * 注意：mybatis自动填充为LocalDateTime
-     */
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
-
-//    @TableLogic
-    private String state;
 }
