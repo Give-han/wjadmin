@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.security.SignatureException;
 
+/**
+ * 全局异常处理
+ */
 @RestControllerAdvice
 public class PermissionHandler {
     @ExceptionHandler(value = { SignatureException.class })
